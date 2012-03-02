@@ -13,7 +13,7 @@
 			obj.item_amount 				= $(element).children().length;
 			obj.item_width 					= obj.container_width / obj.item_amount;
 			obj.active_item_width 			= opts.active_item_width;
-			obj.active_width_others 	= (obj.container_width - obj.active_item_width) / (obj.item_amount-1);
+			obj.active_width_others 		= (obj.container_width - obj.active_item_width) / (obj.item_amount-1);
 			obj.speed 						= opts.speed;
 			obj.easing 						= opts.easing;
 			
@@ -53,7 +53,7 @@
 		
 		this.duringMouseOut = function() {
 			return this;
-		}	
+		}
 		
 		__init();				
 			
