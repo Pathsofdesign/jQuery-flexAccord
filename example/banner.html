@@ -77,11 +77,15 @@ $.fn.flexAccord.defaults = {
 	</div>
 </div>
 <script>
-	$('#banner').flexAccord({ 
+	var banner = $('#banner').flexAccord({ 
 		speed: [400, 400],
 		active_item_width: '400',
 		easing: ['easeOutCirc', 'easeOutCirc']
 	});
+	
+	banner.extraEventsDuringHover = function() {
+		console.log(this.element);
+	}
 </script>
 </body>
 </html>
