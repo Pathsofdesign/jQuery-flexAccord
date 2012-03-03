@@ -27,7 +27,8 @@
 				
 		this.itemMouseOver = function(event) {
 			$(this).addClass('active');
-
+			
+			// Run any manual written functions during this time
 			obj.duringMouseOver();
 						
 			// Change width of all sibblings
@@ -41,6 +42,7 @@
 		this.itemMouseOut = function(event) {
 			$(this).removeClass('active');
 			
+			// Run any manual written functions during this time
 			obj.duringMouseOut();
 			
 			// Set all items back to default width
