@@ -11,7 +11,13 @@
  *
  * active_item_width: '400' - The width the item should be when hovered over.
  * easing: ['swing', 'swing'] - The easing methods that should be envoked on mouse over and mouse out. 
- * speed: [400, 400] - The speed that should be envoked on mouse over and mouse out 
+ * speed: [400, 400] - The speed that should be envoked on mouse over and mouse out.
+ *
+ * 	
+ * METHODS
+ *
+ * duringMouseOver() - Run some custom JS during the mouse over
+ * duringMouseOut() - Run some custom JS during the mouse out
 */
 
 (function($){
