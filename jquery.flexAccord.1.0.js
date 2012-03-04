@@ -1,9 +1,24 @@
+/*
+ * jQuery flexAccord Plugin 1.0
+ * Copyright 2012, Cypress Interactive
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ * Requires jQuery 1.4+
+*/
+
+/* 	
+ * OPTIONS
+ *
+ * active_item_width: '400' - The width the item should be when hovered over.
+ * easing: ['swing', 'swing'] - The easing methods that should be envoked on mouse over and mouse out. 
+ * speed: [400, 400] - The speed that should be envoked on mouse over and mouse out 
+*/
+
 (function($){
 	var flexAccord = function(element, options, callback) {
 	    var element = $(element);
 	    var obj = this;
 		var opts = $.extend({}, $.fn.flexAccord.defaults, options);	
-		var emptyFunction = function(){};
 		
 		// Private Function: __init()
 		var __init = function() {
@@ -78,9 +93,9 @@
 	};	
 	
 	$.fn.flexAccord.defaults = {
-		speed: [400, 400],
 		active_item_width: '400',
-		easing: ['swing', 'swing']
+		easing: ['swing', 'swing'],
+		speed: [400, 400]
 	};		
 	
 })(jQuery);
