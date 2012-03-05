@@ -21,12 +21,11 @@
 */
 
 (function($){
-	var flexAccord = function(element, options, callback) {
+	var flexAccord = function(element, options) {
 	    var element = $(element);
 	    var obj = this;
 		var opts = $.extend({}, $.fn.flexAccord.defaults, options);	
-		
-		// Private Function: __init()
+
 		this.init = function() {
 			
 			opts.container_width 			= $(element).width();
@@ -80,25 +79,25 @@
 			$(element).children().unbind();
 			$(element).children().removeAttr('style');
 		}
-		
+				
 		this.init();				
 			
 	};	
 	
-	$.fn.flexAccord = function(options, callback) {
+	$.fn.flexAccord = function(options) {
 	    this.each(function() {
 	        var element = $(this);
 
 	        // Return early if this element already has a plugin instance
 	        if (element.data('flexAccord')) return;
 
-	        var flexAccord_obj = new flexAccord(element, options, callback);
+	        var flexAccord_obj = new flexAccord(element, options);
 
 	        // Store plugin object in this element's data
 	        element.data('flexAccord', flexAccord_obj);
-	        
 						
 	    });	
+	
 		return this.data('flexAccord');
 	};	
 	

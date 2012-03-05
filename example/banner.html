@@ -124,23 +124,26 @@ $.fn.flexAccord.defaults = {
 	</div>
 </div>
 <script>
-	var banner = $('#banner').flexAccord({ 
-		speed: [400, 400],
-		active_item_width: '400',
-		easing: ['easeOutCirc', 'easeOutCirc']
+	$(document).ready(function() {
+		var banner = $('#banner').flexAccord({ 
+			speed: [400, 400],
+			active_item_width: '400',
+			easing: ['easeOutCirc', 'easeOutCirc']
+		});
+
+		banner.duringMouseOver = function(opts) {
+			$('#banner span.banner-title').stop(true, false).animate({ left: opts.active_item_width });
+			$('#banner .active span.banner-text').stop(true, false).delay(250).animate({ right: 0, opacity: 1 }, 400, 'easeOutCirc');
+		}
+
+		banner.duringMouseOut = function(opts) {
+			$('#banner span.banner-text').stop(true, false).animate({ right: -250, opacity: 0 }, 300, 'easeOutCirc');
+			$('#banner span.banner-title').stop(true, false).delay(300).animate({ left: 0 }, 600, 'easeOutCirc');
+		}
+
 	});
 	
-	banner.duringMouseOver = function(opts) {
-		$('#banner span.banner-title').stop(true, false).animate({ left: opts.active_item_width });
-		$('#banner .active span.banner-text').stop(true, false).delay(250).animate({ right: 0, opacity: 1 }, 400, 'easeOutCirc');
-	}
-	
-	banner.duringMouseOut = function(opts) {
-		$('#banner span.banner-text').stop(true, false).animate({ right: -250, opacity: 0 }, 300, 'easeOutCirc');
-		$('#banner span.banner-title').stop(true, false).delay(300).animate({ left: 0 }, 600, 'easeOutCirc');
-	}
-	
-	
 </script>
+
 </body>
 </html>
