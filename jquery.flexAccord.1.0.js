@@ -27,36 +27,33 @@
 		var opts = $.extend({}, $.fn.flexAccord.defaults, options);	
 		
 		// Private Function: __init()
-		var __init = function() {
+		this.init = function() {
 			
-			obj.element 					= $(element);
-			obj.container_width 			= $(element).width();
-			obj.item_amount 				= $(element).children().length;
-			obj.item_width 					= obj.container_width / obj.item_amount;
-			obj.active_item_width 			= opts.active_item_width;
-			obj.active_width_others 		= (obj.container_width - obj.active_item_width) / (obj.item_amount-1);
-			obj.speed 						= opts.speed;
-			obj.easing 						= opts.easing;
+			opts.container_width 			= $(element).width();
+			opts.item_amount 				= $(element).children().length;
+			opts.item_width 				= opts.container_width / opts.item_amount;
+			opts.active_item_width 			= opts.active_item_width;
+			opts.active_width_others 		= (opts.container_width - opts.active_item_width) / (opts.item_amount-1);
 			
 			// Set initial width to each item
-			$(element).children().width(obj.item_width);
+			$(element).children().width(opts.item_width);
 			
 			// Set event handlers
 			$(element).children().hover(obj.itemMouseOver, obj.itemMouseOut);
 			
 		}
-				
+		
 		this.itemMouseOver = function(event) {
 			$(this).addClass('active');
 			
 			// Run any manual written functions during this time
-			obj.duringMouseOver();
+			obj.duringMouseOver(opts);
 						
 			// Change width of all sibblings
-			$(element).children().stop(true, false).animate({ width: obj.active_width_others }, obj.speed[0], obj.easing[0]);
+			$(element).children().stop(true).animate({ width: opts.active_width_others }, opts.speed[0], opts.easing[0]);
 			
 			// Change width of active item
-			$(this).stop(true, false).animate({ width: obj.active_item_width }, obj.speed[0], obj.easing[0]);
+			$(this).stop(true).animate({ width: opts.active_item_width }, opts.speed[0], opts.easing[0]);
 			
 		}
 
@@ -64,10 +61,10 @@
 			$(this).removeClass('active');
 			
 			// Run any manual written functions during this time
-			obj.duringMouseOut();
+			obj.duringMouseOut(opts);
 			
 			// Set all items back to default width
-			$(element).children().stop(true, false).animate({ width: obj.item_width }, obj.speed[1], obj.easing[1]);
+			$(element).children().stop(true).animate({ width: opts.item_width }, opts.speed[1], opts.easing[1]);
 		}
 		
 		this.duringMouseOver = function() {
@@ -78,7 +75,13 @@
 			return this;
 		}
 		
-		__init();				
+		this.destroy = function() {
+			$(element).removeData('flexAccord');
+			$(element).children().unbind();
+			$(element).children().removeAttr('style');
+		}
+		
+		this.init();				
 			
 	};	
 	
@@ -93,6 +96,7 @@
 
 	        // Store plugin object in this element's data
 	        element.data('flexAccord', flexAccord_obj);
+	        
 						
 	    });	
 		return this.data('flexAccord');

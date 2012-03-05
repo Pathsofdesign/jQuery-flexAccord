@@ -130,15 +130,16 @@ $.fn.flexAccord.defaults = {
 		easing: ['easeOutCirc', 'easeOutCirc']
 	});
 	
-	banner.duringMouseOver = function() {
-		$('#banner span.banner-title').stop(true, false).animate({ left: this.active_item_width });
+	banner.duringMouseOver = function(opts) {
+		$('#banner span.banner-title').stop(true, false).animate({ left: opts.active_item_width });
 		$('#banner .active span.banner-text').stop(true, false).delay(250).animate({ right: 0, opacity: 1 }, 400, 'easeOutCirc');
 	}
 	
-	banner.duringMouseOut = function() {
+	banner.duringMouseOut = function(opts) {
 		$('#banner span.banner-text').stop(true, false).animate({ right: -250, opacity: 0 }, 300, 'easeOutCirc');
 		$('#banner span.banner-title').stop(true, false).delay(300).animate({ left: 0 }, 600, 'easeOutCirc');
 	}
+	
 	
 </script>
 </body>
